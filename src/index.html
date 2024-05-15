@@ -3,9 +3,41 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Title</title>
+    <!-- font awesome -->
+    <script
+      src="https://kit.fontawesome.com/6c33c73c9a.js"
+      crossorigin="anonymous"
+      defer
+    ></script>
+    <title>Image Carousel</title>
   </head>
   <body>
-    <!-- Body -->
+    <header>
+      <div class="header-inner">
+        <div class="header-border">
+          <div class="header-content">
+            <!-- header -->
+            <h1 class="header-title">Dynamic Image Carousel</h1>
+            <p class="header-tagline">Check out these nice images.</p>
+          </div>
+        </div>
+      </div>
+    </header>
+    <main>
+      <div class="carousel-container">
+        <div class="carousel" id="carousel"></div>
+      </div>
+      <div class="carousel-fade"></div>
+    </main>
+    <footer>
+      <div class="carousel-controls">
+        <div class="scroller">
+          <i class="fa-solid fa-chevron-left" id="left"></i>
+        </div>
+        <div class="scroller">
+          <i class="fa-solid fa-chevron-right" id="right"></i>
+        </div>
+      </div>
+    </footer>
   </body>
 </html>

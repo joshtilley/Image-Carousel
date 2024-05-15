@@ -1,6 +1,278 @@
+@font-face {
+  font-family: "WorkSans";
+  src: url("./fonts/WorkSans-VariableFont_wght.ttf");
+  font-style: normal;
+}
+
+@font-face {
+  font-family: "WorkSans";
+  src: url("./fonts/WorkSans-Italic-VariableFont_wght.ttf");
+  font-style: italic;
+}
+
 :root {
   height: 100%;
+  /* breakpoints */
+  --small: 639px; /* max-width  */
+  --medium: 1047px; /* max-width  */
+  --large: 1048px; /* min-width  */
+  /* transitions */
+  --header-hover: 1.8s;
+  --button-hover: 0.5s ease;
+  --carousel-scroll: 1.2s ease;
+  /* image settings */
+  --img-width: 350px;
+  /* colours */
+  /* root */
+  --background-color: hsl(0, 0%, 12%);
+  --main-text-color: hsl(0, 0%, 90%);
+  /* gradient */
+  --g1: hsl(17, 100%, 70%);
+  --g2: hsl(241, 100%, 70%);
+}
+
+* {
+  background-color: transparent;
+  box-sizing: border-box;
+}
+
+h1,
+p,
+button {
   margin: 0;
   padding: 0;
-  /* colours */
+  border: none;
+}
+
+body {
+  height: inherit;
+  margin: 0;
+  padding: 0;
+  background-color: var(--background-color);
+  font-family: "WorkSans";
+  font-weight: 300;
+  font-style: normal;
+  font-size: 18px;
+  color: var(--main-text-color);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  overflow: hidden;
+}
+
+/* header */
+header {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 5;
+}
+
+.header-inner {
+  margin: 1.5em;
+  width: 550px;
+  height: 180px;
+  /* min-height: 146px; */
+  -webkit-box-shadow: 0px 0px 15px 5px rgba(255, 255, 255, 0.11);
+  -moz-box-shadow: 0px 0px 15px 5px rgba(255, 255, 255, 0.11);
+  box-shadow: 0px 0px 15px 5px rgba(255, 255, 255, 0.11);
+}
+
+.header-border {
+  height: 100%;
+  width: 100%;
+  padding: 4px;
+  background-image: linear-gradient(
+    150deg,
+    var(--g1) 0 10%,
+    var(--g2) 45% 60%,
+    var(--g1) 90% 100%
+  );
+  background-size: 150%;
+  background-position: 0%;
+  transition: var(--header-hover) background-position,
+    var(--header-hover) background-size;
+}
+
+.header-border-size-animation {
+  background-size: 200%;
+  transition: var(--header-hover);
+}
+
+.header-border-position-animation {
+  background-position: 50%;
+  transition: var(--header-hover);
+}
+
+@media only screen and (max-width: var(--small)) {
+  .header-inner {
+    max-width: 100%;
+  }
+}
+
+.header-inner:hover .header-border {
+  background-position: 100%;
+  transition: var(--header-hover);
+}
+
+.header-content {
+  padding: 1em 1.1em;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 1em;
+  background-color: var(--background-color);
+  text-align: center;
+}
+
+.header-title {
+  padding: 0.1em;
+  text-transform: uppercase;
+  font-weight: 500;
+  text-decoration: underline transparent;
+  text-underline-offset: 0.2em;
+  transition: var(--header-hover);
+}
+
+.header-inner:hover .header-title {
+  text-decoration: underline;
+  transition: var(--header-hover);
+}
+
+.header-tagline {
+  text-transform: lowercase;
+  transition: var(--header-hover);
+}
+
+/* image carousel */
+main {
+  flex-grow: 1;
+  overflow: hidden;
+  display: flex;
+}
+
+.carousel-container {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.carousel {
+  flex-grow: 1;
+  width: 100%;
+  height: 100%;
+  display: block;
+  overflow: hidden;
+}
+
+.carousel-image {
+  float: left;
+  width: 33%;
+  height: 66%;
+  padding: 10px;
+  position: absolute;
+  top: calc(50% - 250px);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  visibility: hidden;
+}
+
+.offscreenL-image {
+  left: -50%;
+  opacity: 1;
+  visibility: visible;
+  scale: 25%;
+  transition: var(--carousel-scroll);
+}
+
+.left-image {
+  left: 0%;
+  opacity: 1;
+  visibility: visible;
+  scale: 75%;
+  transition: var(--carousel-scroll);
+}
+
+.center-image {
+  left: 33%;
+  opacity: 1;
+  visibility: visible;
+  z-index: 3;
+  transition: var(--carousel-scroll);
+}
+
+.right-image {
+  left: 67%;
+  opacity: 1;
+  visibility: visible;
+  scale: 75%;
+  transition: var(--carousel-scroll);
+}
+
+.offscreenR-image {
+  left: 150%;
+  opacity: 1;
+  visibility: visible;
+  scale: 25%;
+  transition: var(--carousel-scroll);
+}
+
+.carousel-image img {
+  box-sizing: content-box;
+  min-width: 200px;
+  width: 370px;
+  border: 3px solid var(--main-text-color);
+  object-fit: contain;
+}
+
+.carousel-fade {
+  position: absolute;
+  height: 100%;
+  width: 100%;
+  background-image: linear-gradient(
+    to left,
+    var(--background-color),
+    transparent 35% 65%,
+    var(--background-color)
+  );
+  z-index: 2;
+}
+
+/* scroll buttons */
+footer {
+  width: 100%;
+  padding: 3em;
+  z-index: 5;
+  flex-grow: 0;
+}
+
+.carousel-controls {
+  margin: 0 auto;
+  width: 50%;
+  display: flex;
+  justify-content: center;
+  gap: 30%;
+}
+
+#left:hover {
+  color: var(--g2);
+  transition: var(--button-hover);
+}
+
+#right:hover {
+  color: var(--g1);
+  transition: var(--button-hover);
+}
+
+.scroller i {
+  cursor: pointer;
+  font-size: 33px;
+  color: var(--main-text-color);
+  transition: var(--button-hover);
 }
