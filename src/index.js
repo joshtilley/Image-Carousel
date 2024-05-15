@@ -20,7 +20,8 @@ async function populate() {
   for (let i in imageData) {
     let img = imageData[i];
     let imageElement = createImgElement(img.url, img.alt, img.src);
-    imageElement.classList.add(imagePositionTags[i]);
+    if (i < Object.keys(imagePositionTags).length)
+      imageElement.classList.add(imagePositionTags[i]);
     imageCarousel_div.append(imageElement);
   }
 }
@@ -28,7 +29,7 @@ async function populate() {
 populate();
 
 // carousel animations
-const imageElements = document.getElementById("carousel").children;
+const imageElements = document.querySelector(".carousel").children;
 const scrollLeft_btn = document.querySelector("#left");
 const scrollRight_btn = document.querySelector("#right");
 
@@ -36,7 +37,7 @@ scrollLeft_btn.addEventListener("click", () => scrollToLeft(imageElements));
 
 scrollRight_btn.addEventListener("click", () => scrollToRight(imageElements));
 
-setInterval(() => scrollToRight(imageElements), 6000);
+setInterval(() => scrollToRight(imageElements), 8000);
 
 // header border animation
 const headerBoxBorder_div = document.querySelector(".header-border");

@@ -104,12 +104,6 @@ header {
   transition: var(--header-hover);
 }
 
-@media only screen and (max-width: var(--small)) {
-  .header-inner {
-    max-width: 100%;
-  }
-}
-
 .header-inner:hover .header-border {
   background-position: 100%;
   transition: var(--header-hover);
@@ -154,18 +148,7 @@ main {
   display: flex;
 }
 
-.carousel-container {
-  width: 100%;
-  height: 100%;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-}
-
 .carousel {
-  flex-grow: 1;
-  width: 100%;
-  height: 100%;
   display: block;
   overflow: hidden;
 }
@@ -173,34 +156,37 @@ main {
 .carousel-image {
   float: left;
   width: 33%;
-  height: 66%;
-  padding: 10px;
+  height: 500px;
+  top: calc(50% - 200px);
+  /* padding: 20px; */
   position: absolute;
-  top: calc(50% - 250px);
+  visibility: hidden;
+  opacity: 0;
+  /* left: -300%; */
   display: flex;
   justify-content: center;
   align-items: center;
-  visibility: hidden;
+  /* gap: 20px; */
 }
 
 .offscreenL-image {
-  left: -50%;
+  left: -33%;
+  scale: 33%;
   opacity: 1;
   visibility: visible;
-  scale: 25%;
   transition: var(--carousel-scroll);
 }
 
 .left-image {
   left: 0%;
+  scale: 65%;
   opacity: 1;
   visibility: visible;
-  scale: 75%;
   transition: var(--carousel-scroll);
 }
 
 .center-image {
-  left: 33%;
+  left: calc(100% / 3);
   opacity: 1;
   visibility: visible;
   z-index: 3;
@@ -209,26 +195,34 @@ main {
 
 .right-image {
   left: 67%;
+  scale: 65%;
   opacity: 1;
   visibility: visible;
-  scale: 75%;
   transition: var(--carousel-scroll);
 }
 
 .offscreenR-image {
-  left: 150%;
+  left: 100%;
+  scale: 33%;
   opacity: 1;
   visibility: visible;
-  scale: 25%;
   transition: var(--carousel-scroll);
 }
 
 .carousel-image img {
   box-sizing: content-box;
-  min-width: 200px;
-  width: 370px;
+  width: 350px;
   border: 3px solid var(--main-text-color);
   object-fit: contain;
+}
+
+@media only screen and (max-width: 1047px) {
+  .offscreenL-image,
+  .left-image,
+  .right-image,
+  .offscreenR-image {
+    opacity: 0;
+  }
 }
 
 .carousel-fade {
